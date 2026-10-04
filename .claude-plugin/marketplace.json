@@ -1,0 +1,23 @@
+{
+  "name": "ybrain-skill",
+  "owner": {
+    "name": "cyrainfall",
+    "url": "https://github.com/cyrainfall"
+  },
+  "description": "ybrain 个人外脑技能套件，作为可安装的 Claude Code 插件分发。",
+  "plugins": [
+    {
+      "name": "ybrain-skills",
+      "source": "./",
+      "description": "ybrain 外脑套件：主技能（Bootstrap、捕获、组织、提炼、表达、唤起、归档）+ 捕获/组织/提炼/表达四个指令技能。",
+      "category": "productivity",
+      "keywords": [
+        "knowledge-management",
+        "second-brain",
+        "para",
+        "ima",
+        "note-taking"
+      ]
+    }
+  ]
+}

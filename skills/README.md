@@ -1,6 +1,6 @@
 # ybrain skills
 
-本目录下的五个技能随项目一起安装（install.sh / install.ps1，或由代理按 install.md 执行）：
+本目录下的五个技能由标准 skills 安装器安装（`npx skills add cyrainfall/ybrain-skill`），或作为 Claude Code 插件装（`.claude-plugin/`）：
 
 | 技能 | 角色 | 触发 |
 | --- | --- | --- |

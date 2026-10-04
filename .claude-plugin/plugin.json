@@ -1,0 +1,27 @@
+{
+  "name": "ybrain-skills",
+  "version": "1.0.0",
+  "description": "ybrain 个人外脑技能套件：以 CODE 循环（捕获→组织→提炼→表达）+ PARA 组织法为方法论，基于腾讯 IMA OpenAPI 管理个人知识。主技能自带传输脚本与 API 文档。",
+  "author": {
+    "name": "cyrainfall",
+    "url": "https://github.com/cyrainfall"
+  },
+  "homepage": "https://github.com/cyrainfall/ybrain-skill",
+  "repository": "https://github.com/cyrainfall/ybrain-skill",
+  "keywords": [
+    "knowledge-management",
+    "second-brain",
+    "para",
+    "code",
+    "ima",
+    "note-taking",
+    "productivity"
+  ],
+  "skills": [
+    "./skills/ybrain",
+    "./skills/ybrain-capture",
+    "./skills/ybrain-organize",
+    "./skills/ybrain-distill",
+    "./skills/ybrain-express"
+  ]
+}
