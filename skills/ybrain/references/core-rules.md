@@ -6,6 +6,7 @@
 
 - 统一入口：`node "$SKILL_DIR/scripts/ima_api.cjs" <apiPath> <json-body> [opts]`（`$SKILL_DIR` = 本技能目录）
 - 凭证自动解析：环境变量 `IMA_OPENAPI_CLIENTID` / `IMA_OPENAPI_APIKEY` → `~/.config/ima/client_id`、`api_key`。已配置好，无需手工传 opts
+- **凭证缺失引导**：脚本报「未找到 IMA 凭证」时，停止所有 IMA 调用、不重试，把 msg 原样告知用户并引导其到 https://ima.qq.com/agent-interface 获取 clientId / apiKey；用户拿到后协助写入 `~/.config/ima/client_id` 与 `~/.config/ima/api_key`（各自只含凭证值）或设置 `IMA_OPENAPI_CLIENTID` / `IMA_OPENAPI_APIKEY` 环境变量，完成后从被打断的步骤继续
 - 脚本执行错误：进程非 0 退出，stderr 为 `{"code":-100,"msg":"..."}`，`msg` 直接展示用户
 - 业务响应：stdout JSON `{"code":0,"msg":"...","data":{...}}`；`code≠0` 直接把 `msg` 展示给用户，不自行翻译
 - 凭证只发往 `ima.qq.com`；COS 上传用 `create_media` 返回的临时凭证，禁止记录、复用或发往他处

@@ -43,7 +43,7 @@ function loadCredentials(options = {}) {
     const err = new Error('missing credentials');
     err.code = ERR_PROGRAMMATIC;
     err.msg =
-      '未找到 IMA 凭证（clientId / apiKey）。请设置 IMA_CLIENT_ID 和 IMA_API_KEY 环境变量，或将凭证放置在 ~/.config/ima/ 目录下。';
+      '未找到 IMA 凭证（clientId / apiKey）。请到 https://ima.qq.com/agent-interface 获取凭证，然后设置 IMA_CLIENT_ID 和 IMA_API_KEY 环境变量，或分别写入 ~/.config/ima/client_id 与 ~/.config/ima/api_key 文件（各自只含凭证值）。';
     throw err;
   }
 

@@ -21,6 +21,7 @@ description: |
 - **删除仍不存在**：无法删除知识库条目、文件夹、笔记、笔记本。判"不存"的条目一律移 `4-存档`；用户坚持删除时告知其在 IMA 客户端手动操作，不要构造或重试删除接口。
 - **`export_media_for_ima_sandbox` 当前凭证无权限（220030），禁止使用**；知识库条目原文走 `get_media_info` 分支（references/core-rules.md），笔记原文用 `export_note`。
 - **写操作不可逆**。用户显式指令范围内的写入（"记一下"、"整理收件箱"确认后的归位）直接执行；范围外写入（新建知识包、重命名、tag_delete / tag_rename 等）必须先确认。
+- **凭证缺失时立即停**：IMA 调用报「未找到 IMA 凭证」（-100）→ 停止后续调用、不重试，引导用户到 https://ima.qq.com/agent-interface 获取 clientId / apiKey，协助写入 `~/.config/ima/client_id` 与 `~/.config/ima/api_key`（或设置 `IMA_OPENAPI_CLIENTID` / `IMA_OPENAPI_APIKEY`），就绪后从被打断的步骤继续。
 - 操作知识库前用 `search_knowledge_base` 确认角色为创建者/协作成员/管理员；普通成员的库拒绝写操作。
 
 ## 信息架构（双层单库制）
@@ -155,5 +156,6 @@ description: |
 | 知识包每次提炼新建一篇 | 同一项目/主题持续追加到同一篇，蒸馏增值 |
 | 表达完只在会话里展示 | 成品必须落盘为 `【输出】` 笔记，输出留痕才能回流成素材 |
 | 向用户展示 kb_id / note_id 等内部 ID | 只展示名称 |
+| 凭证缺失后反复重试调用、只贴报错 | 停止调用，引导用户到 https://ima.qq.com/agent-interface 获取凭证并协助配置（详见硬边界） |
 | 绕过 `scripts/ima_api.cjs` 直接 curl IMA 接口 | 传输统一走内置 ima_api.cjs，凭证与错误分层复用 |
 | 从 ima-skills 同步更新覆盖内置脚本 | 内置副本是有意冻结的（ADR-0004）；上游修复需手动重新 vendoring 并保留本地补丁 |
